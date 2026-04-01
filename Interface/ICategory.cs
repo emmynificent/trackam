@@ -6,6 +6,7 @@ public interface ICategory
     Task <Category> UpdateCategory(Category category);
     Task<Category?> GetCategoryById(int Id);
     Task<Category> GetCategoryByName(string name);
+    Task <IEnumerable<Category>> GetCategoriesByUserId(int userId);
     
 
 }

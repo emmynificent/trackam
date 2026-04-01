@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackAm", "TrackAm.csproj", "{853B6628-F982-884C-CAC5-410DE6B12ECE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{853B6628-F982-884C-CAC5-410DE6B12ECE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{853B6628-F982-884C-CAC5-410DE6B12ECE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{853B6628-F982-884C-CAC5-410DE6B12ECE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{853B6628-F982-884C-CAC5-410DE6B12ECE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A1B1E8CE-5976-426B-9661-D994911D8ACC}
+	EndGlobalSection
+EndGlobal

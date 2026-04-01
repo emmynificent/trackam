@@ -16,10 +16,12 @@ public class CategoryController : ControllerBase
         _imapper = mapper;
     }
 
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [HttpGet]
     public async Task<IActionResult> AllCategories()
     {
-        var category = await _icategory.GetAllCategory();
+        var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+        var category = await _icategory.GetCategoriesByUserId(userId);
         var categoryMapped = _imapper.Map<List<CategoryOutputDTO>>(category);
         return Ok(categoryMapped);
     }
@@ -80,5 +82,24 @@ public class CategoryController : ControllerBase
         return Ok("Category has been updated");
 
     }
+
+    [HttpGet("GetCategoriesByUserId")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public async Task<IActionResult> GetCategoriesByUserId()
+    {
+        var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+        var categories = await _icategory.GetCategoriesByUserId(userId);
+        var categoriesMapped = _imapper.Map<List<CategoryOutputDTO>>(categories);
+        return Ok(categoriesMapped);
+    }
+
+
+    // [HttpGet]
+    // public async Task<IActionResult> AllCategoriesAdmin()
+    // {
+    //     var category = await _icategory.GetAllCategory();
+    //     var categoryMapped = _imapper.Map<List<CategoryOutputDTO>>(category);
+    //     return Ok(categoryMapped);
+    // }
 
 }

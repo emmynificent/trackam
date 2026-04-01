@@ -59,4 +59,14 @@ public class CategoryRepository : ICategory
         
         return category;
     }
+
+    public async Task<IEnumerable<Category>> GetCategoriesByUserId(int userId)
+    {
+        var categories = await _dbContext.Categories
+        .Where(c => c.UserId == userId)
+        .AsNoTracking()
+        .ToListAsync();
+        
+        return categories;
+    }
 }

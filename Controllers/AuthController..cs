@@ -47,10 +47,8 @@ public class AuthController : ControllerBase
         {
             var userMapped = _mapper.Map<UserOutputDTO>(existingUser);
             var token = _tokenService.GenerateToken(existingUser);
-            return Ok(new
-            {
-                token, userMapped
-            });
+            return Redirect ($"http://localhost:5173/dashboard?token={token}&user={Uri.EscapeDataString(System.Text.Json.JsonSerializer.Serialize(userMapped))}");
+
         }
 
         var newUser = new User
@@ -62,12 +60,10 @@ public class AuthController : ControllerBase
 
         var createdUser = await _iuser.CreateUser(newUser);
         var nowToken = _tokenService.GenerateToken(createdUser);
-        //var userOutput = _mapper.Map<UserOutputDTO>(createdUser);
+        var newUserDto = _mapper.Map<UserOutputDTO>(createdUser);
 
-        return Ok(new
-        {
-            token = nowToken,
-            user = _mapper.Map<UserOutputDTO>(createdUser)
-        } );
-            }
+        return Redirect($"http://localhost:5173/dashboard?token={nowToken}&user={Uri.EscapeDataString(System.Text.Json.JsonSerializer.Serialize(newUserDto))}");
+
+
+    }
 }
